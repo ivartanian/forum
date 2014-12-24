@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="FacadeUnit">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/forum</jta-data-source>
+        <class>com.core.model.entity.User</class>
+        <class>com.core.model.entity.Massages</class>
+        <properties>
+            <property name="javax.persistence.jtaDataSource" value="jdbc/forum"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

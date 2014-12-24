@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="forum:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/forum_ear_exploded</output-path>
+    <root id="root">
+      <element id="module-output" name="forum" />
+      <element id="javaee-facet-resources" facet="forum/javaeeApplication/javaEEApplication" />
+      <element id="directory" name="model.jar">
+        <element id="artifact" artifact-name="model:ejb exploded" />
+      </element>
+      <element id="directory" name="view.war">
+        <element id="artifact" artifact-name="view:war exploded" />
+      </element>
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="eclipselink" />
+      </element>
+      <element id="directory" name="client.war">
+        <element id="artifact" artifact-name="client:war exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>
