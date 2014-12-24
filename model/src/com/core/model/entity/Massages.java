@@ -7,6 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "massages")
+@NamedQueries(value = {@NamedQuery(name = "topMessages", query = "SELECT o from Massages o order by o.date desc")})
 @SequenceGenerator(name = "newid", sequenceName = "NEW_ID", allocationSize = 1)
 public class Massages {
 

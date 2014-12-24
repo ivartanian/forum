@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Local(ForumWork.class)
 @Stateless(name = "ForumFacadeBean")
-public class ForumFacadeBean implements ForumWork {
+public class ForumFacadeBean implements ForumWork, ForumWorkRemote {
 
     @PersistenceContext(unitName = "FacadeUnit")
     private EntityManager entityManager;
@@ -90,5 +90,20 @@ public class ForumFacadeBean implements ForumWork {
     public Massages persistMassages(Massages massages) {
         entityManager.persist(massages);
         return massages;
+    }
+
+    @Override
+    public Object queryByRange(String stmt, int firstResult, int maxResult) {
+
+        Query query = entityManager.createQuery(stmt);
+        if (firstResult > 0){
+            query.setFirstResult(firstResult);
+        }
+        if (maxResult > 0){
+            query.setMaxResults(maxResult);
+        }
+
+        return query.getResultList();
+
     }
 }

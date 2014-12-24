@@ -17,6 +17,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
+          <factory-entry name="FacadeUnit" value="4d06b757-f8f3-44c6-b624-4ed88dc22207" />
           <factory-entry name="noname-persistence.xml@120" value="4d06b757-f8f3-44c6-b624-4ed88dc22207" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/META-INF/persistence.xml" />

@@ -1,3 +1,4 @@
+import com.core.model.beans.ForumWorkRemote;
 import weblogic.jndi.WLInitialContextFactory;
 
 import javax.naming.*;
@@ -17,7 +18,7 @@ public class JNDI_Console {
 
         Context context = null;
         Hashtable env = new Hashtable<>();
-        env.put(Context.PROVIDER_URL, "t3://10.82.231.3:80");
+        env.put(Context.PROVIDER_URL, "t3://62.80.177.154:80");
         env.put(Context.INITIAL_CONTEXT_FACTORY, WLInitialContextFactory.class.getName());
         Connection connection = null;
         try {
@@ -36,6 +37,9 @@ public class JNDI_Console {
             connection = ((DataSource)forumJDBC).getConnection();
             System.out.println(connection.getMetaData().getDriverVersion());
 
+//            ForumWorkRemote forumWorkRemote = (ForumWorkRemote) context.lookup("ForumFacadeBean#com.core.model.beans.ForumWorkRemote");
+//
+//            System.out.println(forumWorkRemote);
 
         } catch (NamingException e) {
             e.printStackTrace();

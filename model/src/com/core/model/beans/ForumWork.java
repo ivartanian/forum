@@ -18,4 +18,8 @@ public interface ForumWork {
 
     public Massages persistMassages(Massages massages);
 
+    public Object queryByRange(String stmt, int firstResult, int maxResult);
+
+
+
 }
