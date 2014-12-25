@@ -27,5 +27,9 @@ public class MessageReportBean implements MessageListener {
         } catch (JMSException e) {
             e.printStackTrace();
         }
+
+//        RTFProcessor processor = null;
+//        DataProcessor dataProcessor = null;
+
     }
 }
