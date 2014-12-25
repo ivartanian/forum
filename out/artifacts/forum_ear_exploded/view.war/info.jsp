@@ -23,7 +23,6 @@
 <hr>
 <div>
 
-    <sql:query var="q" dataSource="jdbc/forum" sql="SELECT * FROM (SELECT * FROM massages ORDER BY date DESC)"/>
     <table>
 
         <tr>
@@ -32,7 +31,7 @@
             <td>Massage</td>
         </tr>
 
-        <c:forEach var="item" items="${q.rows}">
+        <c:forEach var="item" items="${requestScope.top10}">
         <tr>
             <td>${item.date}</td>
             <td>${item.login}</td>
@@ -47,6 +46,10 @@
     <input name="text" type="text"/>
     <input value="send" type="submit"/>
 </form>
+<div>
+    <a href="report">Report</a>
+</div>
+
 
 </body>
 </html>

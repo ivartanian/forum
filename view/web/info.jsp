@@ -46,6 +46,10 @@
     <input name="text" type="text"/>
     <input value="send" type="submit"/>
 </form>
+<div>
+    <a href="report">Report</a>
+</div>
+
 
 </body>
 </html>

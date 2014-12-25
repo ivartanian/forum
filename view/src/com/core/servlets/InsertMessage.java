@@ -39,7 +39,6 @@ public class InsertMessage extends HttpServlet {
 
         String text = null;
         text = request.getParameter("text");
-        System.out.println(text);
         Massages massages = new Massages();
         massages.setLogin(user.getLogin());
         massages.setMassage(text);
