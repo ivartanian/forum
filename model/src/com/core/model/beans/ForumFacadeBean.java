@@ -6,6 +6,7 @@ import com.core.model.entity.User;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Local;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +17,8 @@ import java.util.List;
  * Created by i.vartanian on 14.12.2014.
  */
 @Local(ForumWork.class)
-@Stateless(name = "ForumFacadeBean")
+@Remote(ForumWorkRemote.class)
+@Stateless(name = "ForumFacadeBean", mappedName = "ForumBean")
 public class ForumFacadeBean implements ForumWork, ForumWorkRemote {
 
     @PersistenceContext(unitName = "FacadeUnit")
@@ -29,9 +31,9 @@ public class ForumFacadeBean implements ForumWork, ForumWorkRemote {
     @Override
     public User getUser(String login, String password) throws Exception {
         List<User> usersList = findPersonByLoginAndPassword(login, password);
-        if (usersList.size() <=0){
+        if (usersList.size() <= 0) {
             throw new Exception("This user is failed");
-        }else if (usersList.size() > 1){
+        } else if (usersList.size() > 1) {
             throw new Exception("The database have more 1 user");
         }
         return usersList.get(0);
@@ -41,7 +43,7 @@ public class ForumFacadeBean implements ForumWork, ForumWorkRemote {
     public User setAndGetUser(String login, String password, String name, String email) throws Exception {
 
         List<User> usersList = findPersonByLoginAndEmail(login, email);
-        if (usersList.size() >= 1){
+        if (usersList.size() >= 1) {
             throw new Exception("The database have one or more users");
         }
 //        String sql = "INSERT INTO USERS (LOGIN, NAME, PASSWORD, EMAIL) VALUES (?, ?, ?, ?);";
@@ -96,14 +98,22 @@ public class ForumFacadeBean implements ForumWork, ForumWorkRemote {
     public Object queryByRange(String stmt, int firstResult, int maxResult) {
 
         Query query = entityManager.createQuery(stmt);
-        if (firstResult > 0){
+        if (firstResult > 0) {
             query.setFirstResult(firstResult);
         }
-        if (maxResult > 0){
+        if (maxResult > 0) {
             query.setMaxResults(maxResult);
         }
 
         return query.getResultList();
+
+    }
+
+    @Override
+    public List<Massages> getTopTen() {
+
+        List<Massages> list = (List<Massages>) queryByRange("SELECT o from Massages o order by o.date desc", 0, 10);
+        return list;
 
     }
 }

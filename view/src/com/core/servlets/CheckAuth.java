@@ -1,5 +1,8 @@
 package com.core.servlets;
 
+import com.core.model.beans.ForumWork;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +16,9 @@ import java.io.IOException;
  */
 public class CheckAuth extends HttpServlet {
 
+    @EJB
+    private ForumWork forumWork;
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -22,8 +28,9 @@ public class CheckAuth extends HttpServlet {
             request.getRequestDispatcher("auth.html").forward(request, response);
             return;
         } else {
-//            request.getRequestDispatcher("info.jsp").forward(request, response);
-            response.sendRedirect("info.jsp");
+            request.setAttribute("top10", forumWork.getTopTen());
+            request.getRequestDispatcher("info.jsp").forward(request, response);
+//            response.sendRedirect("info.jsp");
         }
 
     }

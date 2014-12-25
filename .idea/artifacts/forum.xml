@@ -3,9 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/forum</output-path>
     <root id="archive" name="forum.ear">
       <element id="artifact" artifact-name="forum:ear exploded" />
-      <element id="directory" name="lib">
-        <element id="library" level="project" name="eclipselink" />
-      </element>
     </root>
   </artifact>
 </component>

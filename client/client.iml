@@ -23,5 +23,8 @@
     <orderEntry type="library" name="javax.servlet-3.1" level="project" />
     <orderEntry type="module" module-name="model" />
     <orderEntry type="library" name="javax.ejb-api-3.2" level="project" />
+    <orderEntry type="library" name="eclipselink" level="project" />
+    <orderEntry type="library" name="JPA 1.0-JPA 1.0" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>

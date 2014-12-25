@@ -18,7 +18,7 @@ public class JNDI_Console {
 
         Context context = null;
         Hashtable env = new Hashtable<>();
-        env.put(Context.PROVIDER_URL, "t3://62.80.177.154:80");
+        env.put(Context.PROVIDER_URL, "t3://127.0.0.1:80");
         env.put(Context.INITIAL_CONTEXT_FACTORY, WLInitialContextFactory.class.getName());
         Connection connection = null;
         try {
@@ -33,18 +33,18 @@ public class JNDI_Console {
 //            context.rebind("count", ((Long)context.lookup("count") + 100));
 //            System.out.println(context.lookup("count"));
 
-            Object forumJDBC = context.lookup("jdbc/forum");
-            connection = ((DataSource)forumJDBC).getConnection();
-            System.out.println(connection.getMetaData().getDriverVersion());
+//            Object forumJDBC = context.lookup("jdbc/forum");
+//            connection = ((DataSource)forumJDBC).getConnection();
+//            System.out.println(connection.getMetaData().getDriverVersion());
 
-//            ForumWorkRemote forumWorkRemote = (ForumWorkRemote) context.lookup("ForumFacadeBean#com.core.model.beans.ForumWorkRemote");
-//
-//            System.out.println(forumWorkRemote);
+            ForumWorkRemote forumWorkRemote = (ForumWorkRemote) context.lookup("ForumBean#com.core.model.beans.ForumWorkRemote");
+
+            System.out.println(forumWorkRemote);
 
         } catch (NamingException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
         } finally {
             try {
                 if (connection != null) {

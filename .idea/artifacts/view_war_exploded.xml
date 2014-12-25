@@ -5,6 +5,14 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="view" />
+          <element id="jpa-descriptors" facet="model/jpa/JPA" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.servlet-3.1" />
+          <element id="library" level="project" name="javax.ejb-api-3.2" />
+          <element id="library" level="project" name="JPA 1.0-JPA 1.0" />
+          <element id="library" level="project" name="jstl-1.2" />
+          <element id="library" level="project" name="eclipselink" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="view/web/Web" />

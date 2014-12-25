@@ -4,6 +4,7 @@ import com.core.model.entity.Massages;
 import com.core.model.entity.User;
 
 import javax.ejb.Local;
+import java.util.List;
 
 
 /**
@@ -20,6 +21,6 @@ public interface ForumWork {
 
     public Object queryByRange(String stmt, int firstResult, int maxResult);
 
-
+    public List<Massages> getTopTen();
 
 }

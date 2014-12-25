@@ -1,6 +1,7 @@
 package com.core.model.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by i.vartanian on 24.12.2014.
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "massages")
 @NamedQueries(value = {@NamedQuery(name = "topMessages", query = "SELECT o from Massages o order by o.date desc")})
 @SequenceGenerator(name = "newid", sequenceName = "NEW_ID", allocationSize = 1)
-public class Massages {
+public class Massages implements Serializable {
 
     private String login;
     private String massage;
@@ -78,4 +79,14 @@ public class Massages {
         return result;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Massages{");
+        sb.append("login='").append(login).append('\'');
+        sb.append(", massage='").append(massage).append('\'');
+        sb.append(", date='").append(date).append('\'');
+        sb.append(", id=").append(id);
+        sb.append('}');
+        return sb.toString();
+    }
 }
